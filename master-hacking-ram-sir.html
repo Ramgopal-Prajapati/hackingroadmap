@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Master Hacking with Ram Sir — Elite Ethical Hacking Roadmap</title>
+<meta name="description" content="A senior-level, structured roadmap to become a world-class ethical hacker with Ram Sir. Chapters, modules, technologies, jobs & salary, market analysis and more." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.15.1/devicon.min.css">
+<style>
+:root{
+  --bg:#05070d;
+  --bg-2:#0a0f1c;
+  --panel:rgba(15,22,38,.7);
+  --panel-2:rgba(20,28,48,.55);
+  --border:rgba(0,255,180,.18);
+  --border-2:rgba(0,200,255,.22);
+  --text:#e6f4ff;
+  --muted:#8ea0bd;
+  --neon:#00ffb0;
+  --neon-2:#00c8ff;
+  --neon-3:#ff2e88;
+  --neon-4:#c084fc;
+  --warn:#ffb020;
+  --danger:#ff4d6d;
+  --grad: linear-gradient(135deg,#00ffb0 0%, #00c8ff 50%, #c084fc 100%);
+  --grad-2: linear-gradient(135deg,#ff2e88, #c084fc, #00c8ff);
+  --shadow: 0 20px 60px -20px rgba(0,255,180,.35);
+  --radius:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{scroll-behavior:smooth}
+body{
+  font-family:'Space Grotesk',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* ---------- Global background layers ---------- */
+.bg-grid{
+  position:fixed;inset:0;z-index:-3;pointer-events:none;
+  background:
+   radial-gradient(1200px 800px at 10% -10%, rgba(0,255,180,.12), transparent 60%),
+   radial-gradient(1000px 700px at 110% 10%, rgba(0,200,255,.12), transparent 60%),
+   radial-gradient(900px 700px at 50% 120%, rgba(192,132,252,.12), transparent 60%),
+   linear-gradient(180deg,#04060b, #05070d 40%, #04060b);
+}
+.bg-grid::before{
+  content:"";position:absolute;inset:0;
+  background-image:
+   linear-gradient(rgba(0,255,180,.06) 1px, transparent 1px),
+   linear-gradient(90deg, rgba(0,200,255,.06) 1px, transparent 1px);
+  background-size:44px 44px;
+  mask-image:radial-gradient(ellipse at center, black 40%, transparent 85%);
+  animation:gridShift 30s linear infinite;
+}
+@keyframes gridShift{
+  0%{background-position:0 0,0 0}
+  100%{background-position:440px 0, 0 440px}
+}
+
+/* Floating tech icons background */
+.floating-icons{
+  position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden;
+}
+.floating-icons i{
+  position:absolute;
+  color:rgba(0,255,180,.15);
+  font-size:26px;
+  animation:floatUp linear infinite;
+  filter:drop-shadow(0 0 6px rgba(0,255,180,.35));
+}
+.floating-icons i:nth-child(3n){color:rgba(0,200,255,.18)}
+.floating-icons i:nth-child(3n+1){color:rgba(192,132,252,.18)}
+.floating-icons i:nth-child(5n){color:rgba(255,46,136,.18)}
+@keyframes floatUp{
+  0%{transform:translateY(110vh) rotate(0deg);opacity:0}
+  10%{opacity:1}
+  90%{opacity:1}
+  100%{transform:translateY(-20vh) rotate(360deg);opacity:0}
+}
+
+/* Scanlines */
+.scanlines{
+  position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.06;
+  background:repeating-linear-gradient(0deg, #fff 0 1px, transparent 1px 3px);
+  mix-blend-mode:overlay;
+}
+
+/* ---------- Navigation ---------- */
+header.nav{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(14px);
+  background:rgba(5,7,13,.6);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{
+  max-width:1280px;margin:0 auto;
+  padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.brand{display:flex;align-items:center;gap:12px;font-family:'Orbitron',sans-serif;font-weight:800;letter-spacing:1px}
+.brand .logo{
+  width:38px;height:38px;border-radius:10px;
+  background:var(--grad);
+  display:grid;place-items:center;color:#00121a;font-size:18px;
+  box-shadow:0 0 24px rgba(0,255,180,.55);
+  animation:pulseGlow 3s ease-in-out infinite;
+}
+@keyframes pulseGlow{
+  0%,100%{box-shadow:0 0 24px rgba(0,255,180,.55)}
+  50%{box-shadow:0 0 40px rgba(0,200,255,.75)}
+}
+.brand span b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav-links{display:flex;gap:22px;flex-wrap:wrap}
+.nav-links a{
+  font-size:14px;color:var(--muted);position:relative;padding:6px 2px;transition:.25s;
+}
+.nav-links a:hover{color:var(--text)}
+.nav-links a::after{
+  content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;
+  background:var(--grad);transform:scaleX(0);transform-origin:right;transition:transform .3s ease;
+}
+.nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
+.nav-cta{
+  padding:10px 16px;border-radius:10px;font-weight:600;font-size:14px;
+  background:var(--grad);color:#00121a;
+  box-shadow:0 8px 24px -8px rgba(0,255,180,.7);
+  transition:transform .25s, box-shadow .25s;
+}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 12px 30px -8px rgba(0,200,255,.9)}
+.burger{display:none;background:none;border:0;color:var(--text);font-size:22px;cursor:pointer}
+@media(max-width:900px){
+  .nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:rgba(5,7,13,.95);flex-direction:column;padding:18px 22px;border-bottom:1px solid var(--border)}
+  .nav-links.open{display:flex}
+  .burger{display:block}
+}
+
+/* ---------- Section base ---------- */
+section{padding:100px 22px;position:relative}
+.container{max-width:1280px;margin:0 auto}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--neon);padding:6px 12px;border:1px solid var(--border);border-radius:999px;
+  background:rgba(0,255,180,.05);
+}
+h2.title{
+  font-family:'Orbitron',sans-serif;font-weight:800;
+  font-size:clamp(28px,4vw,46px);line-height:1.1;margin:14px 0 12px;
+}
+h2.title b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.section-sub{color:var(--muted);max-width:720px;font-size:16px}
+
+/* Reveal on scroll */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease, transform .8s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ---------- Hero ---------- */
+.hero{padding-top:80px;padding-bottom:60px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:48px;align-items:center}
+@media(max-width:960px){.hero-grid{grid-template-columns:1fr}}
+.hero h1{
+  font-family:'Orbitron',sans-serif;font-weight:900;
+  font-size:clamp(36px,6vw,68px);line-height:1.02;letter-spacing:-.5px;
+}
+.hero h1 .grad{
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 30px rgba(0,255,180,.35));
+}
+.hero .type{
+  font-family:'JetBrains Mono',monospace;color:var(--neon-2);margin-top:14px;font-size:15px;
+}
+.hero .type::after{content:"▍";animation:blink 1s steps(1) infinite;color:var(--neon)}
+@keyframes blink{50%{opacity:0}}
+.hero p.lead{color:var(--muted);margin-top:18px;font-size:17px;max-width:600px}
+.hero .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
+.btn{
+  padding:14px 22px;border-radius:12px;font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:10px;
+  border:1px solid transparent;cursor:pointer;transition:.25s;
+}
+.btn-primary{background:var(--grad);color:#00121a;box-shadow:0 10px 30px -10px rgba(0,255,180,.7)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 40px -10px rgba(0,200,255,.9)}
+.btn-ghost{background:rgba(255,255,255,.03);color:var(--text);border-color:var(--border-2)}
+.btn-ghost:hover{background:rgba(0,200,255,.08);border-color:var(--neon-2)}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px;max-width:520px}
+.stat{
+  padding:16px;border-radius:14px;border:1px solid var(--border);
+  background:linear-gradient(180deg, rgba(0,255,180,.06), rgba(0,200,255,.02));
+}
+.stat b{display:block;font-family:'Orbitron',sans-serif;font-size:22px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px}
+
+/* Terminal card */
+.terminal{
+  border-radius:20px;overflow:hidden;
+  border:1px solid var(--border);
+  background:linear-gradient(180deg, rgba(10,15,28,.9), rgba(6,10,18,.9));
+  box-shadow:0 30px 80px -30px rgba(0,255,180,.4), inset 0 0 40px rgba(0,200,255,.06);
+  transform:perspective(1000px) rotateY(-4deg) rotateX(4deg);
+  transition:transform .5s ease;
+}
+.terminal:hover{transform:perspective(1000px) rotateY(0) rotateX(0)}
+.term-head{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--border);background:rgba(0,0,0,.3)}
+.term-dot{width:12px;height:12px;border-radius:50%}
+.d1{background:#ff5f57}.d2{background:#febc2e}.d3{background:#28c840}
+.term-head .title{margin-left:12px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted)}
+.term-body{padding:18px;font-family:'JetBrains Mono',monospace;font-size:13.5px;line-height:1.7;min-height:340px}
+.term-body .p{color:var(--neon)}
+.term-body .c{color:var(--neon-2)}
+.term-body .m{color:var(--muted)}
+.term-body .r{color:var(--neon-3)}
+.term-body .w{color:#fff}
+.orbit{
+  position:absolute;inset:0;pointer-events:none;
+}
+.orbit i{position:absolute;font-size:22px;color:var(--neon-2);filter:drop-shadow(0 0 8px rgba(0,200,255,.6))}
+.orbit i.a{top:8%;left:-2%;animation:spin 18s linear infinite}
+.orbit i.b{bottom:6%;right:-2%;color:var(--neon-3);animation:spin 22s linear infinite reverse}
+.orbit i.c{top:40%;right:-4%;color:var(--neon);animation:spin 26s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- Chapters ---------- */
+.chapter-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;margin-top:44px}
+.chapter{
+  position:relative;padding:24px;border-radius:var(--radius);
+  border:1px solid var(--border);
+  background:var(--panel);
+  overflow:hidden;transition:.3s;
+}
+.chapter::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(600px 200px at var(--mx,50%) var(--my,0%), rgba(0,255,180,.12), transparent 60%);
+  opacity:0;transition:opacity .3s;
+}
+.chapter:hover{transform:translateY(-6px);border-color:var(--neon-2);box-shadow:0 20px 50px -20px rgba(0,200,255,.5)}
+.chapter:hover::before{opacity:1}
+.chapter .num{
+  font-family:'Orbitron',sans-serif;font-size:12px;color:var(--neon);letter-spacing:2px;
+}
+.chapter h3{font-family:'Orbitron',sans-serif;font-size:18px;margin:6px 0 8px}
+.chapter p{color:var(--muted);font-size:14px}
+.chapter .icon{
+  width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
+  background:linear-gradient(135deg, rgba(0,255,180,.15), rgba(0,200,255,.1));
+  border:1px solid var(--border);margin-bottom:14px;color:var(--neon);
+}
+.chapter .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.tag{font-size:11px;padding:4px 8px;border-radius:999px;background:rgba(0,200,255,.08);border:1px solid var(--border-2);color:var(--neon-2);font-family:'JetBrains Mono',monospace}
+
+/* ---------- Modules (roadmap timeline) ---------- */
+.timeline{position:relative;margin-top:44px}
+.timeline::before{
+  content:"";position:absolute;left:20px;top:0;bottom:0;width:2px;
+  background:linear-gradient(180deg,var(--neon),var(--neon-2),var(--neon-4));
+  box-shadow:0 0 20px rgba(0,255,180,.4);
+}
+@media(min-width:900px){
+  .timeline::before{left:50%;transform:translateX(-1px)}
+}
+.tl-item{position:relative;padding-left:56px;margin-bottom:36px}
+@media(min-width:900px){
+  .tl-item{width:50%;padding-left:0;padding-right:40px}
+  .tl-item:nth-child(even){margin-left:50%;padding-left:40px;padding-right:0}
+}
+.tl-item .dot{
+  position:absolute;left:12px;top:8px;width:18px;height:18px;border-radius:50%;
+  background:var(--neon);box-shadow:0 0 20px var(--neon);
+  animation:pulseDot 2s ease-in-out infinite;
+}
+@media(min-width:900px){
+  .tl-item .dot{left:auto;right:-9px}
+  .tl-item:nth-child(even) .dot{left:-9px;right:auto}
+}
+@keyframes pulseDot{50%{transform:scale(1.35);box-shadow:0 0 30px var(--neon-2)}}
+.tl-card{
+  padding:20px;border-radius:14px;background:var(--panel-2);border:1px solid var(--border-2);
+  transition:.3s;
+}
+.tl-card:hover{border-color:var(--neon);transform:translateY(-3px);box-shadow:0 15px 40px -15px rgba(0,255,180,.4)}
+.tl-card .step{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--neon-3)}
+.tl-card h4{font-family:'Orbitron',sans-serif;font-size:17px;margin:4px 0 8px}
+.tl-card ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tl-card ul li{font-size:12px;padding:4px 10px;border-radius:8px;background:rgba(0,255,180,.06);border:1px solid var(--border);color:var(--neon)}
+
+/* ---------- Content deep cards (definition/why/usecase/topics/types) ---------- */
+.deep-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px;margin-top:44px}
+.deep{
+  padding:26px;border-radius:18px;border:1px solid var(--border);
+  background:linear-gradient(180deg, rgba(0,255,180,.05), rgba(0,200,255,.02));
+  position:relative;overflow:hidden;transition:.3s;
+}
+.deep:hover{transform:translateY(-6px);border-color:var(--neon-2)}
+.deep .head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.deep .head .ic{
+  width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
+  background:var(--grad);color:#001318;font-size:18px;
+  box-shadow:0 8px 24px -8px rgba(0,255,180,.6);
+}
+.deep h3{font-family:'Orbitron',sans-serif;font-size:18px}
+.deep .row{display:grid;grid-template-columns:120px 1fr;gap:10px;padding:10px 0;border-top:1px dashed rgba(255,255,255,.06);font-size:14px}
+.deep .row:first-of-type{border-top:0}
+.deep .row .k{color:var(--neon);font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:1px;text-transform:uppercase}
+.deep .row .v{color:#cbd6ea}
+.deep .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.chip{font-size:11px;padding:3px 8px;border-radius:6px;background:rgba(0,200,255,.08);border:1px solid var(--border-2);color:var(--neon-2);font-family:'JetBrains Mono',monospace}
+
+/* ---------- Tech Stack ---------- */
+.tech-wall{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:14px;margin-top:34px;
+}
+.tech{
+  padding:18px 10px;border-radius:14px;border:1px solid var(--border);
+  background:var(--panel);text-align:center;transition:.3s;position:relative;overflow:hidden;
+}
+.tech i{font-size:38px;transition:.3s}
+.tech .devicon-linux-plain{color:#f5f5f5}
+.tech:hover{transform:translateY(-4px) scale(1.03);border-color:var(--neon);box-shadow:0 12px 30px -10px rgba(0,255,180,.4)}
+.tech:hover i{transform:scale(1.1)}
+.tech span{display:block;margin-top:8px;font-size:12px;color:var(--muted);font-family:'JetBrains Mono',monospace}
+
+/* Marquee ticker */
+.ticker{
+  overflow:hidden;padding:14px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  background:rgba(0,0,0,.35);margin-top:30px;
+}
+.ticker-track{display:flex;gap:60px;white-space:nowrap;animation:tick 30s linear infinite;font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--neon)}
+.ticker-track span i{margin-right:8px;color:var(--neon-2)}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ---------- Jobs & Salary ---------- */
+.job-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-top:44px}
+.job{
+  padding:22px;border-radius:16px;border:1px solid var(--border);
+  background:var(--panel);position:relative;overflow:hidden;transition:.3s;
+}
+.job::after{
+  content:"";position:absolute;top:-50%;right:-40%;width:220px;height:220px;border-radius:50%;
+  background:radial-gradient(circle, rgba(0,255,180,.15), transparent 70%);transition:.4s;
+}
+.job:hover{transform:translateY(-6px);border-color:var(--neon-2)}
+.job:hover::after{transform:scale(1.4)}
+.job .role{font-family:'Orbitron',sans-serif;font-size:17px}
+.job .exp{font-size:12px;color:var(--muted);margin-top:4px}
+.job .salary{
+  margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:22px;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.job .desc{font-size:13px;color:#a9b8d1;margin-top:6px}
+
+/* ---------- Market ---------- */
+.market{display:grid;grid-template-columns:1.1fr 1fr;gap:36px;margin-top:44px;align-items:center}
+@media(max-width:900px){.market{grid-template-columns:1fr}}
+.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.market .stat-b{
+  padding:20px;border-radius:14px;border:1px solid var(--border);background:var(--panel);
+}
+.market .stat-b b{font-family:'Orbitron',sans-serif;font-size:28px;background:var(--grad-2);-webkit-background-clip:text;background-clip:text;color:transparent;display:block}
+.market .stat-b span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.bar-list{display:flex;flex-direction:column;gap:16px}
+.bar{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:14px}
+.bar .lbl{display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px;font-family:'JetBrains Mono',monospace}
+.bar .lbl span:last-child{color:var(--neon)}
+.bar .track{height:10px;border-radius:999px;background:rgba(255,255,255,.05);overflow:hidden}
+.bar .fill{height:100%;background:var(--grad);border-radius:999px;box-shadow:0 0 15px rgba(0,255,180,.5);width:0;transition:width 1.6s cubic-bezier(.2,.8,.2,1)}
+
+/* ---------- FAQ / Important Questions ---------- */
+.faq{margin-top:44px;display:grid;gap:14px}
+.faq details{
+  border:1px solid var(--border);border-radius:14px;padding:18px 20px;background:var(--panel);
+  transition:.3s;
+}
+.faq details[open]{border-color:var(--neon);box-shadow:0 12px 30px -12px rgba(0,255,180,.35)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px;font-weight:600;font-family:'Orbitron',sans-serif;font-size:15px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--neon);font-size:22px;transition:.3s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .ans{margin-top:12px;color:var(--muted);font-size:14.5px}
+
+/* ---------- Trainer ---------- */
+.trainer{
+  display:grid;grid-template-columns:.9fr 1.4fr;gap:36px;margin-top:44px;align-items:center;
+  padding:34px;border-radius:24px;border:1px solid var(--border);
+  background:linear-gradient(135deg, rgba(0,255,180,.08), rgba(192,132,252,.06));
+  position:relative;overflow:hidden;
+}
+@media(max-width:900px){.trainer{grid-template-columns:1fr}}
+.trainer::before{
+  content:"";position:absolute;inset:-2px;border-radius:26px;padding:2px;
+  background:var(--grad);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  opacity:.6;pointer-events:none;
+}
+.avatar{
+  width:100%;aspect-ratio:1;max-width:280px;margin:0 auto;border-radius:50%;
+  background:
+    radial-gradient(circle at 30% 30%, #00ffb0, transparent 60%),
+    radial-gradient(circle at 70% 70%, #00c8ff, transparent 60%),
+    #0a1120;
+  display:grid;place-items:center;color:#001318;font-size:80px;font-family:'Orbitron',sans-serif;font-weight:900;
+  box-shadow:0 30px 80px -20px rgba(0,255,180,.5), inset 0 0 60px rgba(0,0,0,.5);
+  position:relative;overflow:hidden;
+}
+.avatar::after{
+  content:"";position:absolute;inset:-4px;border-radius:50%;
+  border:2px dashed rgba(0,255,180,.4);animation:spin 20s linear infinite;
+}
+.trainer h3{font-family:'Orbitron',sans-serif;font-size:26px;margin-bottom:6px}
+.trainer .role-t{color:var(--neon-2);font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:2px;text-transform:uppercase}
+.trainer p{color:#cbd6ea;margin-top:12px}
+.trainer .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.badge{padding:6px 10px;border-radius:8px;background:rgba(0,255,180,.08);border:1px solid var(--border);font-size:12px;color:var(--neon);font-family:'JetBrains Mono',monospace}
+.trainer .socials{display:flex;gap:10px;margin-top:18px}
+.socials a{
+  width:40px;height:40px;border-radius:10px;display:grid;place-items:center;
+  border:1px solid var(--border-2);color:var(--neon-2);transition:.3s;
+}
+.socials a:hover{background:var(--neon-2);color:#001318;transform:translateY(-3px)}
+
+/* ---------- Contact ---------- */
+.contact{
+  display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:44px;
+}
+@media(max-width:900px){.contact{grid-template-columns:1fr}}
+.contact-info{
+  padding:28px;border-radius:18px;border:1px solid var(--border);
+  background:linear-gradient(160deg, rgba(0,200,255,.08), rgba(0,255,180,.04));
+}
+.info-row{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px dashed rgba(255,255,255,.08)}
+.info-row:last-child{border:0}
+.info-row .ic{
+  width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
+  background:var(--grad);color:#001318;font-size:16px;
+}
+.info-row b{display:block;font-size:15px}
+.info-row span{font-size:12px;color:var(--muted)}
+.info-row a{color:var(--neon)}
+form.msg{
+  padding:28px;border-radius:18px;border:1px solid var(--border);background:var(--panel);display:flex;flex-direction:column;gap:14px;
+}
+form.msg label{font-size:12px;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase}
+form.msg input, form.msg textarea{
+  width:100%;padding:12px 14px;border-radius:10px;
+  background:rgba(0,0,0,.35);border:1px solid var(--border-2);color:var(--text);
+  font-family:inherit;font-size:14px;transition:.25s;
+}
+form.msg input:focus, form.msg textarea:focus{outline:none;border-color:var(--neon);box-shadow:0 0 0 3px rgba(0,255,180,.15)}
+form.msg textarea{min-height:120px;resize:vertical}
+
+/* ---------- Footer ---------- */
+footer{
+  padding:60px 22px 30px;border-top:1px solid var(--border);
+  background:linear-gradient(180deg, transparent, rgba(0,255,180,.03));position:relative;overflow:hidden;
+}
+.foot-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:28px}
+@media(max-width:800px){.foot-grid{grid-template-columns:1fr 1fr}}
+.foot-grid h5{font-family:'Orbitron',sans-serif;font-size:14px;margin-bottom:14px;letter-spacing:1px}
+.foot-grid a{display:block;color:var(--muted);font-size:14px;padding:4px 0;transition:.25s}
+.foot-grid a:hover{color:var(--neon);transform:translateX(4px)}
+.foot-brand p{color:var(--muted);font-size:14px;margin-top:10px;max-width:340px}
+.copyright{max-width:1280px;margin:40px auto 0;border-top:1px solid var(--border);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;color:var(--muted);font-family:'JetBrains Mono',monospace}
+.copyright .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* Utility */
+.center{text-align:center}
+.mx-auto{margin-inline:auto}
+.section-head{max-width:820px;text-align:center;margin:0 auto}
+.section-head .section-sub{margin-inline:auto}
+
+/* scrollbar */
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:#04060b}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--neon),var(--neon-2));border-radius:10px}
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="floating-icons" id="floatingIcons"></div>
+<div class="scanlines"></div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="logo"><i class="fa-solid fa-shield-halved"></i></div>
+      <span>MASTER <b>HACKING</b> · RAM SIR</span>
+    </div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#chapters">Chapters</a>
+      <a href="#modules">Roadmap</a>
+      <a href="#content">Content</a>
+      <a href="#tech">Tech</a>
+      <a href="#jobs">Jobs</a>
+      <a href="#market">Market</a>
+      <a href="#faq">Questions</a>
+      <a href="#trainer">Trainer</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="nav-cta"><i class="fa-solid fa-terminal"></i> Enroll Now</a>
+    <button class="burger" onclick="document.getElementById('navLinks').classList.toggle('open')"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="reveal">
+      <div class="eyebrow"><i class="fa-solid fa-bolt"></i> Elite Cybersecurity Roadmap · 2026</div>
+      <h1>Master <span class="grad">Ethical Hacking</span> with Ram Sir</h1>
+      <div class="type" id="typer"></div>
+      <p class="lead">A structured, senior-level path to become one of the top 1% ethical hackers — deep OS internals, networking, programming, exploitation, red-teaming, cloud, mobile, malware, and bug bounty. No shortcuts. Real skill.</p>
+      <div class="cta-row">
+        <a href="#modules" class="btn btn-primary"><i class="fa-solid fa-rocket"></i> Start the Roadmap</a>
+        <a href="tel:9753528324" class="btn btn-ghost"><i class="fa-solid fa-phone"></i> Call: 9753528324</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><b>17</b><span>Chapters</span></div>
+        <div class="stat"><b>200+</b><span>Modules</span></div>
+        <div class="stat"><b>3–5 yrs</b><span>Elite Path</span></div>
+      </div>
+    </div>
+
+    <div class="reveal" style="position:relative">
+      <div class="orbit">
+        <i class="fa-brands fa-linux a"></i>
+        <i class="fa-solid fa-network-wired b"></i>
+        <i class="fa-solid fa-bug c"></i>
+      </div>
+      <div class="terminal">
+        <div class="term-head">
+          <div class="term-dot d1"></div><div class="term-dot d2"></div><div class="term-dot d3"></div>
+          <div class="title">ram@offensive:~/roadmap</div>
+        </div>
+        <div class="term-body" id="term">
+          <div><span class="c">$</span> <span class="w">whoami</span></div>
+          <div class="m">→ future elite ethical hacker</div>
+          <div><span class="c">$</span> <span class="w">nmap -sV target.local</span></div>
+          <div class="p">PORT   STATE SERVICE  VERSION</div>
+          <div class="p">22/tcp open  ssh      OpenSSH 9.6</div>
+          <div class="p">80/tcp open  http     nginx 1.27</div>
+          <div><span class="c">$</span> <span class="w">python3 exploit.py --target 10.0.0.5</span></div>
+          <div class="r">[+] Foothold acquired</div>
+          <div class="r">[+] Privilege escalated → root</div>
+          <div class="p">[✓] Report drafted → ready for disclosure</div>
+          <div><span class="c">$</span> <span class="w">./learn --with ram-sir</span></div>
+          <div class="m">→ loading roadmap...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTERS -->
+<section id="chapters">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow"><i class="fa-solid fa-list-check"></i> Course Chapters</div>
+      <h2 class="title">17 Chapters. One <b>Elite Path.</b></h2>
+      <p class="section-sub">Each chapter is a domain — mastered end-to-end. Fundamentals first, then offense, then specialization.</p>
+    </div>
+
+    <div class="chapter-grid" id="chapterGrid">
+      <!-- injected -->
+    </div>
+  </div>
+</section>
+
+<!-- MODULES / ROADMAP -->
+<section id="modules">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow"><i class="fa-solid fa-route"></i> Step-by-Step Roadmap</div>
+      <h2 class="title">The <b>17-Step</b> Roadmap</h2>
+      <p class="section-sub">If your fundamentals are weak, you'll never become elite. Follow the sequence — don't skip.</p>
+    </div>
+
+    <div class="timeline" id="timeline">
+      <!-- injected -->
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT DEEP CARDS -->
+<section id="content">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow"><i class="fa-solid fa-book-open"></i> Deep Content</div>
+      <h2 class="title">Every Topic — <b>Defined, Justified, Applied.</b></h2>
+      <p class="section-sub">Definition · Why it matters · Real-world use case · Core topics · Types. No fluff.</p>
+    </div>
+
+    <div class="deep-grid" id="deepGrid">
+      <!-- injected -->
+    </div>
+  </div>
+</section>
+
+<!-- TECH -->
+<section id="tech">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow"><i class="fa-solid fa-microchip"></i> Technologies & Tools</div>
+      <h2 class="title">The Stack of a <b>Real Hacker.</b></h2>
+      <p class="section-sub">Languages, OS internals, network stacks, offensive frameworks and cloud — the toolbelt you'll actually use.</p>
+    </div>
+
+    <div class="tech-wall" id="techWall"></div>
+
+    <div class="ticker reveal">
+      <div class="ticker-track" id="ticker">
+        <!-- injected twice -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOBS -->
+<section id="jobs">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow"><i class="fa-solid fa-briefcase"></i> Jobs & Salaries</div>
+      <h2 class="title">Where This Roadmap <b>Takes You.</b></h2>
+      <p class="section-sub">India + global market. Numbers are indicative annual CTC ranges based on 2025–2026 hiring trends.</p>
+    </div>
+
+    <div class="job-grid" id="jobGrid"></div>
+  </div>
+</section>
+
+<!-- MARKET -->
+<section id="market">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow"><i class="fa-solid fa-chart-line"></i> Market Analysis · 2026</div>
+      <h2 class="title">Cybersecurity Is <b>Exploding.</b></h2>
+      <p class="section-sub">Companies hire people who can demonstrate real skills — not just complete courses.</p>
+    </div>
+
+    <div class="market reveal">
+      <div class="bar-list">
+        <div class="bar"><div class="lbl"><span>Web Application Security</span><span>92%</span></div><div class="track"><div class="fill" data-w="92"></div></div></div>
+        <div class="bar"><div class="lbl"><span>Cloud Security (AWS/Azure/GCP)</span><span>88%</span></div><div class="track"><div class="fill" data-w="88"></div></div></div>
+        <div class="bar"><div class="lbl"><span>Application Security (AppSec)</span><span>84%</span></div><div class="track"><div class="fill" data-w="84"></div></div></div>
+        <div class="bar"><div class="lbl"><span>Penetration Testing / Red Team</span><span>80%</span></div><div class="track"><div class="fill" data-w="80"></div></div></div>
+        <div class="bar"><div class="lbl"><span>Detection Engineering / SOC</span><span>75%</span></div><div class="track"><div class="fill" data-w="75"></div></div></div>
+        <div class="bar"><div class="lbl"><span>AI / LLM Security</span><span>70%</span></div><div class="track"><div class="fill" data-w="70"></div></div></div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-b"><b>$500B+</b><span>Global cybersecurity market by 2030</span></div>
+        <div class="stat-b"><b>3.5M</b><span>Unfilled security jobs worldwide</span></div>
+        <div class="stat-b"><b>13%</b><span>CAGR growth rate</span></div>
+        <div class="stat-b"><b>Top 1%</b><span>Earn 10–50× the average</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow"><i class="fa-solid fa-circle-question"></i> Important Questions</div>
+      <h2 class="title">Answers Every <b>Serious Learner</b> Asks.</h2>
+    </div>
+
+    <div class="faq" id="faqList"></div>
+  </div>
+</section>
+
+<!-- TRAINER -->
+<section id="trainer">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow"><i class="fa-solid fa-user-shield"></i> Meet Your Trainer</div>
+      <h2 class="title">Learn From <b>Ram Sir.</b></h2>
+    </div>
+
+    <div class="trainer reveal">
+      <div class="avatar">RS</div>
+      <div>
+        <div class="role-t">Senior Cybersecurity Mentor · Red Teamer</div>
+        <h3>Ram Sir</h3>
+        <p>A senior offensive-security practitioner with years of hands-on experience across penetration testing, red teaming, web & cloud security, Active Directory attacks, reverse engineering and bug bounty. Ram Sir mentors students the way he mentors juniors on his team — deep fundamentals first, then real-world offense, then specialization. No hype. No shortcuts. Just craft.</p>
+        <div class="badges">
+          <span class="badge"><i class="fa-solid fa-shield-halved"></i> OSCP Mindset</span>
+          <span class="badge"><i class="fa-solid fa-terminal"></i> Red Team Ops</span>
+          <span class="badge"><i class="fa-brands fa-linux"></i> Linux Internals</span>
+          <span class="badge"><i class="fa-solid fa-cloud"></i> Cloud Security</span>
+          <span class="badge"><i class="fa-solid fa-bug"></i> Bug Bounty</span>
+          <span class="badge"><i class="fa-solid fa-microchip"></i> Reverse Engineering</span>
+        </div>
+        <div class="socials">
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://wa.me/919753528324" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow"><i class="fa-solid fa-paper-plane"></i> Send Message / Enquiry</div>
+      <h2 class="title">Ready to <b>Level Up?</b></h2>
+      <p class="section-sub">Have a question about the roadmap, batches, or one-on-one mentorship? Reach out directly.</p>
+    </div>
+
+    <div class="contact reveal">
+      <div class="contact-info">
+        <div class="info-row">
+          <div class="ic"><i class="fa-solid fa-phone"></i></div>
+          <div><b><a href="tel:9753528324">+91 97535 28324</a></b><span>Mon – Sat · 10 AM – 8 PM</span></div>
+        </div>
+        <div class="info-row">
+          <div class="ic"><i class="fa-brands fa-whatsapp"></i></div>
+          <div><b><a href="https://wa.me/919753528324">WhatsApp · 9753528324</a></b><span>Fastest response</span></div>
+        </div>
+        <div class="info-row">
+          <div class="ic"><i class="fa-solid fa-envelope"></i></div>
+          <div><b><a href="mailto:ram@masterhacking.in">ram@masterhacking.in</a></b><span>For detailed queries</span></div>
+        </div>
+        <div class="info-row">
+          <div class="ic"><i class="fa-solid fa-location-dot"></i></div>
+          <div><b>India · Online + Offline Batches</b><span>Weekend & weekday cohorts</span></div>
+        </div>
+        <div class="info-row">
+          <div class="ic"><i class="fa-solid fa-shield-halved"></i></div>
+          <div><b>Ethical use only</b><span>Every lab is authorized. No illegal targets. Ever.</span></div>
+        </div>
+      </div>
+
+      <form class="msg" onsubmit="event.preventDefault(); const n=this.name.value.trim(), p=this.phone.value.trim(), m=this.message.value.trim(); const url='https://wa.me/919753528324?text='+encodeURIComponent('Hi Ram Sir,\nName: '+n+'\nPhone: '+p+'\nMessage: '+m); window.open(url,'_blank');">
+        <div>
+          <label>Your Name</label>
+          <input name="name" type="text" placeholder="e.g. Aryan Sharma" required>
+        </div>
+        <div>
+          <label>Phone / WhatsApp</label>
+          <input name="phone" type="tel" placeholder="e.g. 98765 43210" required>
+        </div>
+        <div>
+          <label>Message</label>
+          <textarea name="message" placeholder="I want to join the next batch. My background is..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="justify-content:center"><i class="fa-solid fa-paper-plane"></i> Send via WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <div class="brand">
+        <div class="logo"><i class="fa-solid fa-shield-halved"></i></div>
+        <span>MASTER <b>HACKING</b> · RAM SIR</span>
+      </div>
+      <p>A senior-level roadmap to become one of the best ethical hackers in India — built on fundamentals, offense, and specialization. Learn the craft, ethically.</p>
+      <div class="socials" style="margin-top:16px">
+        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#"><i class="fa-brands fa-github"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://wa.me/919753528324"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div>
+      <h5>Learn</h5>
+      <a href="#chapters">Chapters</a>
+      <a href="#modules">Roadmap</a>
+      <a href="#content">Deep Content</a>
+      <a href="#tech">Technologies</a>
+    </div>
+    <div>
+      <h5>Career</h5>
+      <a href="#jobs">Jobs & Salary</a>
+      <a href="#market">Market Analysis</a>
+      <a href="#faq">Important Questions</a>
+      <a href="#trainer">Trainer</a>
+    </div>
+    <div>
+      <h5>Contact</h5>
+      <a href="tel:9753528324"><i class="fa-solid fa-phone"></i> 9753528324</a>
+      <a href="https://wa.me/919753528324"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+      <a href="mailto:ram@masterhacking.in"><i class="fa-solid fa-envelope"></i> Email</a>
+      <a href="#contact"><i class="fa-solid fa-paper-plane"></i> Send Query</a>
+    </div>
+  </div>
+  <div class="copyright">
+    <div>© 2026 <span class="grad">Master Hacking with Ram Sir</span>. All rights reserved.</div>
+    <div>Built for learners who want the real thing · <i class="fa-solid fa-heart" style="color:var(--neon-3)"></i></div>
+  </div>
+</footer>
+
+<script>
+/* ---------- Floating icons ---------- */
+const icons = ["fa-brands fa-linux","fa-brands fa-python","fa-brands fa-js","fa-brands fa-docker","fa-brands fa-aws","fa-brands fa-windows","fa-brands fa-android","fa-brands fa-git-alt","fa-brands fa-github","fa-solid fa-network-wired","fa-solid fa-bug","fa-solid fa-shield-halved","fa-solid fa-terminal","fa-solid fa-lock","fa-solid fa-key","fa-solid fa-fingerprint","fa-solid fa-database","fa-solid fa-server","fa-solid fa-code","fa-solid fa-microchip","fa-solid fa-user-secret","fa-solid fa-satellite-dish","fa-solid fa-wifi","fa-solid fa-cloud"];
+const fi = document.getElementById('floatingIcons');
+for(let i=0;i<28;i++){
+  const el = document.createElement('i');
+  el.className = icons[Math.floor(Math.random()*icons.length)];
+  el.style.left = Math.random()*100+'vw';
+  el.style.animationDuration = (14 + Math.random()*22)+'s';
+  el.style.animationDelay = (-Math.random()*20)+'s';
+  el.style.fontSize = (16 + Math.random()*28)+'px';
+  fi.appendChild(el);
+}
+
+/* ---------- Typer ---------- */
+const phrases = [
+  "> initializing offensive-security curriculum...",
+  "> mastering networking, OS internals & programming...",
+  "> web · cloud · AD · reverse engineering · bug bounty...",
+  "> becoming the top 1% — the ethical way."
+];
+const typer = document.getElementById('typer');
+let pi=0, ci=0, del=false;
+function tick(){
+  const cur = phrases[pi];
+  typer.textContent = cur.slice(0, ci);
+  if(!del){
+    ci++;
+    if(ci>cur.length){del=true;setTimeout(tick,1600);return}
+  } else {
+    ci--;
+    if(ci===0){del=false;pi=(pi+1)%phrases.length}
+  }
+  setTimeout(tick, del?25:45);
+}
+tick();
+
+/* ---------- Chapters data ---------- */
+const chapters = [
+  {n:"01", i:"fa-solid fa-computer", t:"Computer Foundations", d:"Insane fundamentals of how computers really work — the base every elite hacker shares.", tags:["OS","Memory","Processes"]},
+  {n:"02", i:"fa-solid fa-network-wired", t:"Networking Mastery", d:"Know networks better than network engineers. TCP/IP, DNS, TLS, routing, packet analysis.", tags:["TCP/IP","Wireshark","Nmap"]},
+  {n:"03", i:"fa-solid fa-code", t:"Programming for Hackers", d:"Python for automation, C for internals, JS for web, Bash for Linux, SQL for databases.", tags:["Python","C","JS","Bash","SQL"]},
+  {n:"04", i:"fa-brands fa-linux", t:"Linux Deep Dive", d:"Beyond Kali. Permissions, cron, iptables, services, kernel and bash scripting.", tags:["Ubuntu","Kernel","Bash"]},
+  {n:"05", i:"fa-solid fa-flask", t:"Home Lab & Networking Labs", d:"Build your own attack lab — VMs, DVWA, Metasploitable, OWASP BWA, VulnHub.", tags:["VirtualBox","DVWA","VulnHub"]},
+  {n:"06", i:"fa-solid fa-globe", t:"Web Security & OWASP Top 10", d:"Where most jobs are. Every vulnerability studied, practiced and reported.", tags:["OWASP","XSS","SQLi","SSRF"]},
+  {n:"07", i:"fa-solid fa-spider", t:"Burp Suite Mastery", d:"Proxy, Repeater, Intruder, Decoder, Extensions — the daily driver of pro testers.", tags:["Burp","Extensions"]},
+  {n:"08", i:"fa-solid fa-magnifying-glass", t:"Reconnaissance & OSINT", d:"Subdomains, DNS, dorking, fingerprinting — knowing everything before attacking.", tags:["OSINT","Subfinder","ffuf"]},
+  {n:"09", i:"fa-solid fa-bug", t:"Exploitation", d:"XSS, CSRF, SQLi, XXE, SSRF, RCE, IDOR, JWT, business logic, API abuse.", tags:["RCE","IDOR","API"]},
+  {n:"10", i:"fa-brands fa-windows", t:"Active Directory Attacks", d:"Enterprise Windows environments — Kerberos, NTLM, BloodHound, lateral movement.", tags:["AD","Kerberos","BloodHound"]},
+  {n:"11", i:"fa-solid fa-microchip", t:"Reverse Engineering", d:"Assembly, x86/x64, Ghidra, IDA, x64dbg, ELF/PE dissection.", tags:["Ghidra","IDA","asm"]},
+  {n:"12", i:"fa-solid fa-memory", t:"Binary Exploitation", d:"Buffer overflows, ROP, canaries, ASLR/DEP bypass, heap & format string.", tags:["ROP","BOF","Heap"]},
+  {n:"13", i:"fa-solid fa-cloud", t:"Cloud Security", d:"AWS · Azure · GCP · IAM · S3 · Lambda · Docker · Kubernetes.", tags:["AWS","K8s","IAM"]},
+  {n:"14", i:"fa-brands fa-android", t:"Mobile Security", d:"Android internals, APK reversing, Frida, MobSF, Jadx, ADB.", tags:["Android","Frida","MobSF"]},
+  {n:"15", i:"fa-solid fa-key", t:"Cryptography", d:"AES, RSA, ECC, SHA, HMAC, JWT, TLS certificates — attack and defend.", tags:["AES","RSA","JWT"]},
+  {n:"16", i:"fa-solid fa-virus", t:"Malware & Forensics", d:"Static/dynamic analysis, sandboxes, YARA, memory + disk + log forensics.", tags:["YARA","Volatility","Autopsy"]},
+  {n:"17", i:"fa-solid fa-trophy", t:"Bug Bounty & Career", d:"HackerOne, Bugcrowd, Intigriti — responsible disclosure & career launch.", tags:["H1","Bugcrowd","Certs"]},
+];
+const cg = document.getElementById('chapterGrid');
+chapters.forEach(c=>{
+  const el = document.createElement('div');
+  el.className='chapter reveal';
+  el.innerHTML = `
+    <div class="icon"><i class="${c.i}"></i></div>
+    <div class="num">CHAPTER ${c.n}</div>
+    <h3>${c.t}</h3>
+    <p>${c.d}</p>
+    <div class="tags">${c.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>`;
+  el.addEventListener('mousemove',e=>{
+    const r = el.getBoundingClientRect();
+    el.style.setProperty('--mx',(e.clientX-r.left)+'px');
+    el.style.setProperty('--my',(e.clientY-r.top)+'px');
+  });
+  cg.appendChild(el);
+});
+
+/* ---------- Timeline modules ---------- */
+const steps = [
+  {s:"Step 1", t:"Build an Insane Computer Foundation (6–12 months)", i:["Windows Internals","Linux","Processes","Threads","Memory","Permissions","File Systems"]},
+  {s:"Step 2", t:"Networking — the Most Important Skill", i:["TCP/IP","UDP","DNS","HTTP/HTTPS","SSL/TLS","Routing","NAT","VPN","ARP","DHCP","Wireshark","Nmap"]},
+  {s:"Step 3", t:"Programming for Hackers", i:["Python","C","JavaScript","Bash","SQL"]},
+  {s:"Step 4", t:"Learn Linux Deeply (Beyond Kali)", i:["Ubuntu","Permissions","Cron","SSH","iptables","Logs","Bash scripting","Kernel basics"]},
+  {s:"Step 5", t:"Build Your Home / Networking Lab", i:["VirtualBox","VMware","Metasploitable","OWASP BWA","DVWA","VulnHub"]},
+  {s:"Step 6", t:"Web Security & OWASP Top 10", i:["Access Control","Crypto Failures","Injection","Insecure Design","Misconfig","SSRF","Auth Failures"]},
+  {s:"Step 7", t:"Master Burp Suite", i:["Proxy","Repeater","Intruder","Decoder","Extensions"]},
+  {s:"Step 8", t:"Reconnaissance", i:["OSINT","Google Dorking","Subfinder","Amass","Nmap","ffuf","Gobuster"]},
+  {s:"Step 9", t:"Exploitation", i:["XSS","CSRF","SQLi","XXE","SSRF","RCE","File Upload","JWT","IDOR","API"]},
+  {s:"Step 10", t:"Active Directory", i:["Kerberos","NTLM","BloodHound","PowerShell","Lateral Movement","PrivEsc"]},
+  {s:"Step 11", t:"Reverse Engineering", i:["Assembly","x86/x64","Ghidra","IDA Free","x64dbg","ELF","PE"]},
+  {s:"Step 12", t:"Binary Exploitation", i:["Buffer Overflow","ROP","Stack Canary","ASLR","DEP","Format String","Heap"]},
+  {s:"Step 13", t:"Cloud Security", i:["AWS","Azure","GCP","IAM","S3","Lambda","Docker","Kubernetes"]},
+  {s:"Step 14", t:"Mobile Security", i:["Android","APK","Frida","MobSF","Jadx","ADB"]},
+  {s:"Step 15", t:"Cryptography", i:["AES","RSA","ECC","SHA","HMAC","JWT","TLS"]},
+  {s:"Step 16", t:"Malware Analysis & Forensics", i:["Static","Dynamic","Sandbox","YARA","Volatility","Autopsy"]},
+  {s:"Step 17", t:"Bug Bounty & Certifications", i:["HackerOne","Bugcrowd","Intigriti","Security+","PNPT","OSCP","CRTO","eJPT"]},
+];
+const tl = document.getElementById('timeline');
+steps.forEach(s=>{
+  const el = document.createElement('div');
+  el.className='tl-item reveal';
+  el.innerHTML = `
+    <div class="dot"></div>
+    <div class="tl-card">
+      <div class="step">${s.s}</div>
+      <h4>${s.t}</h4>
+      <ul>${s.i.map(x=>`<li>${x}</li>`).join('')}</ul>
+    </div>`;
+  tl.appendChild(el);
+});
+
+/* ---------- Deep content cards ---------- */
+const deep = [
+  {i:"fa-solid fa-network-wired",t:"Networking",def:"The science of how computers exchange data over wired and wireless mediums.",why:"You cannot hack what you don't understand. Every attack rides on a protocol.",use:"Packet crafting, MITM, traffic analysis, firewall evasion, C2 tunneling.",top:["TCP/IP","DNS","HTTP/S","TLS","Routing","NAT","VPN","ARP","DHCP"],typ:["LAN/WAN","IPv4/IPv6","Transport (TCP/UDP)","Application (DNS/HTTP)"]},
+  {i:"fa-solid fa-globe",t:"Web Security",def:"Identifying and fixing vulnerabilities in web applications, APIs and browsers.",why:"Web is the largest attack surface — most bug bounties and pentests live here.",use:"Testing SaaS apps, e-commerce, banking portals, admin panels & REST/GraphQL APIs.",top:["XSS","SQLi","CSRF","SSRF","IDOR","JWT","File Upload","Business Logic","API"],typ:["Injection","Access Control","Crypto Failures","Misconfig","SSRF"]},
+  {i:"fa-brands fa-windows",t:"Active Directory",def:"Microsoft's identity & policy system used in almost every enterprise.",why:"Most high-paying enterprise engagements involve AD — cracking it means cracking the org.",use:"Internal red-team ops, phishing → foothold → DA path, lateral movement drills.",top:["Kerberos","NTLM","BloodHound","GPO","Lateral Movement","PrivEsc"],typ:["Kerberoasting","AS-REP","DCSync","Golden/Silver Ticket","Constrained Delegation"]},
+  {i:"fa-solid fa-cloud",t:"Cloud Security",def:"Securing infrastructure and services on AWS, Azure and GCP.",why:"Every modern company runs on cloud — misconfig is the #1 breach cause.",use:"IAM hardening, S3 exposure hunts, Lambda abuse, container escapes.",top:["IAM","S3","Lambda","VPC","KMS","Docker","Kubernetes"],typ:["IaaS","PaaS","SaaS","Serverless","Containers"]},
+  {i:"fa-solid fa-microchip",t:"Reverse Engineering",def:"Dissecting compiled binaries to understand behavior, find bugs or defeat protections.",why:"Separates average hackers from elite. Powers malware analysis and exploit dev.",use:"Analyzing malware, cracking DRM, auditing closed-source software, CTFs.",top:["Assembly","Ghidra","IDA","x64dbg","ELF","PE"],typ:["Static RE","Dynamic RE","Firmware RE","Mobile RE"]},
+  {i:"fa-solid fa-memory",t:"Binary Exploitation",def:"Turning memory-corruption bugs into arbitrary code execution.",why:"The highest-skill offensive discipline — 0-days are born here.",use:"Kernel exploits, browser sandbox escapes, CTF pwn, exploit development.",top:["BOF","ROP","ASLR","DEP","Canary","Format String","Heap"],typ:["Stack-based","Heap-based","Use-After-Free","Type Confusion"]},
+  {i:"fa-brands fa-android",t:"Mobile Security",def:"Attacking and defending Android/iOS apps and their backends.",why:"Billions of devices, huge bounty scope, weakly-tested APIs.",use:"APK reversing, runtime hooking, cert-pinning bypass, backend API audits.",top:["APK","Frida","MobSF","Jadx","ADB"],typ:["Static Analysis","Dynamic Analysis","Instrumentation","Network Interception"]},
+  {i:"fa-solid fa-key",t:"Cryptography",def:"The math and engineering of confidentiality, integrity and authenticity.",why:"Broken crypto = broken systems. Every hacker must recognize weak schemes.",use:"Cracking weak JWTs, padding-oracle attacks, TLS misconfig, hash cracking.",top:["AES","RSA","ECC","SHA","HMAC","JWT","TLS"],typ:["Symmetric","Asymmetric","Hashing","MAC","PKI"]},
+  {i:"fa-solid fa-virus",t:"Malware Analysis",def:"Understanding malicious code to build detections and attribution.",why:"Defenders and red teamers both need this to write & catch payloads.",use:"IR investigations, threat intel, YARA rule development, sandbox research.",top:["Static","Dynamic","Sandbox","YARA","PE files","VirusTotal"],typ:["Trojans","Ransomware","Rootkits","Loaders","Stealers"]},
+  {i:"fa-solid fa-fingerprint",t:"Digital Forensics",def:"Recovering evidence from systems after a security incident.",why:"Turns chaos into a defensible timeline of what actually happened.",use:"Corporate IR, law enforcement, insider-threat cases, breach reports.",top:["Memory","Disk","Logs","Autopsy","Volatility"],typ:["Host Forensics","Network Forensics","Mobile Forensics","Cloud Forensics"]},
+  {i:"fa-solid fa-user-secret",t:"OSINT & Recon",def:"Gathering public information to map targets before any interaction.",why:"90% of a great engagement is reconnaissance done well.",use:"Attack-surface mapping, phishing scoping, executive protection research.",top:["Subfinder","Amass","Dorking","DNS Enum","Fingerprinting","ffuf","Gobuster"],typ:["Passive Recon","Active Recon","Human OSINT","Infra OSINT"]},
+  {i:"fa-solid fa-trophy",t:"Bug Bounty",def:"Legally hunting vulnerabilities for cash rewards on authorized programs.",why:"Best public proving ground — reputation, cash and skill compound together.",use:"Reporting XSS/IDOR/SSRF/RCE to companies via HackerOne, Bugcrowd, Intigriti.",top:["Scope","Recon","Automation","Report Writing","Disclosure"],typ:["Public Programs","Private Invites","VDP","Live Hacking Events"]}
+];
+const dg = document.getElementById('deepGrid');
+deep.forEach(d=>{
+  const el = document.createElement('div');
+  el.className='deep reveal';
+  el.innerHTML = `
+    <div class="head">
+      <div class="ic"><i class="${d.i}"></i></div>
+      <h3>${d.t}</h3>
+    </div>
+    <div class="row"><div class="k">Definition</div><div class="v">${d.def}</div></div>
+    <div class="row"><div class="k">Why</div><div class="v">${d.why}</div></div>
+    <div class="row"><div class="k">Use Case</div><div class="v">${d.use}</div></div>
+    <div class="row"><div class="k">Topics</div><div class="v"><div class="chips">${d.top.map(x=>`<span class="chip">${x}</span>`).join('')}</div></div></div>
+    <div class="row"><div class="k">Types</div><div class="v"><div class="chips">${d.typ.map(x=>`<span class="chip">${x}</span>`).join('')}</div></div></div>`;
+  dg.appendChild(el);
+});
+
+/* ---------- Tech wall ---------- */
+const tech = [
+  {c:"devicon-linux-plain",n:"Linux"},
+  {c:"devicon-ubuntu-plain colored",n:"Ubuntu"},
+  {c:"devicon-windows8-original colored",n:"Windows"},
+  {c:"devicon-python-plain colored",n:"Python"},
+  {c:"devicon-c-plain colored",n:"C"},
+  {c:"devicon-javascript-plain colored",n:"JavaScript"},
+  {c:"devicon-bash-plain",n:"Bash"},
+  {c:"devicon-mysql-plain colored",n:"SQL"},
+  {c:"devicon-docker-plain colored",n:"Docker"},
+  {c:"devicon-kubernetes-plain colored",n:"Kubernetes"},
+  {c:"devicon-amazonwebservices-plain-wordmark colored",n:"AWS"},
+  {c:"devicon-azure-plain colored",n:"Azure"},
+  {c:"devicon-googlecloud-plain colored",n:"GCP"},
+  {c:"devicon-android-plain colored",n:"Android"},
+  {c:"devicon-git-plain colored",n:"Git"},
+  {c:"devicon-github-original",n:"GitHub"},
+  {c:"devicon-nginx-original colored",n:"Nginx"},
+  {c:"devicon-postgresql-plain colored",n:"Postgres"},
+];
+const extra = [
+  {c:"fa-solid fa-spider",n:"Burp Suite"},
+  {c:"fa-solid fa-magnifying-glass-chart",n:"Wireshark"},
+  {c:"fa-solid fa-radar",n:"Nmap"},
+  {c:"fa-solid fa-explosion",n:"Metasploit"},
+  {c:"fa-solid fa-user-secret",n:"BloodHound"},
+  {c:"fa-solid fa-microchip",n:"Ghidra"},
+  {c:"fa-solid fa-bug-slash",n:"Frida"},
+  {c:"fa-solid fa-shield-virus",n:"YARA"},
+  {c:"fa-solid fa-brain",n:"Volatility"},
+  {c:"fa-solid fa-terminal",n:"tmux"},
+];
+const tw = document.getElementById('techWall');
+tech.forEach(t=>{
+  const el=document.createElement('div');
+  el.className='tech reveal';
+  el.innerHTML=`<i class="${t.c}"></i><span>${t.n}</span>`;
+  tw.appendChild(el);
+});
+extra.forEach(t=>{
+  const el=document.createElement('div');
+  el.className='tech reveal';
+  el.style.color='var(--neon)';
+  el.innerHTML=`<i class="${t.c}" style="color:var(--neon)"></i><span>${t.n}</span>`;
+  tw.appendChild(el);
+});
+
+/* Ticker */
+const tickerItems = ["Nmap","Burp Suite","Wireshark","Metasploit","BloodHound","Ghidra","Frida","YARA","Volatility","Amass","Subfinder","ffuf","Gobuster","John","Hashcat","Hydra","sqlmap","Impacket","CrackMapExec","Responder","Mimikatz","Kerbrute","Autopsy","MobSF"];
+const ticker = document.getElementById('ticker');
+const tickHTML = tickerItems.map(x=>`<span><i class="fa-solid fa-terminal"></i>${x}</span>`).join('');
+ticker.innerHTML = tickHTML + tickHTML;
+
+/* ---------- Jobs ---------- */
+const jobs = [
+  {r:"SOC Analyst (L1)", e:"0–1 yr · Entry", s:"₹3.5 – 6 LPA", d:"Alert triage, log monitoring, incident escalation.", i:"fa-solid fa-eye"},
+  {r:"Jr. Penetration Tester", e:"0–2 yr", s:"₹5 – 9 LPA", d:"Web/network VAPT under senior guidance, reporting.", i:"fa-solid fa-bug"},
+  {r:"Web / API Pentester", e:"2–4 yr", s:"₹9 – 18 LPA", d:"Burp, OWASP Top 10, business logic, API abuse.", i:"fa-solid fa-globe"},
+  {r:"Red Team Operator", e:"3–6 yr", s:"₹18 – 35 LPA", d:"Full-scope simulated attacks, C2, AD, evasion.", i:"fa-solid fa-user-secret"},
+  {r:"Cloud Security Engineer", e:"3–6 yr", s:"₹20 – 40 LPA", d:"AWS/Azure/GCP hardening, IAM, IaC security.", i:"fa-solid fa-cloud"},
+  {r:"Application Security (AppSec)", e:"3–6 yr", s:"₹22 – 45 LPA", d:"SDLC security, code review, threat modeling.", i:"fa-solid fa-code"},
+  {r:"Reverse Engineer / Malware Analyst", e:"4–8 yr", s:"₹25 – 55 LPA", d:"Binary analysis, IR, threat intel, YARA rules.", i:"fa-solid fa-microchip"},
+  {r:"Exploit Developer", e:"5–10 yr", s:"₹40 – 90 LPA+", d:"0-day research, kernel/browser exploitation.", i:"fa-solid fa-memory"},
+  {r:"Bug Bounty Hunter (Top)", e:"Skill-based", s:"₹Unlimited", d:"Top hunters earn $100K–$1M+ annually on H1/Bugcrowd.", i:"fa-solid fa-trophy"},
+  {r:"CISO / Security Architect", e:"10+ yr", s:"₹60 LPA – 2 Cr+", d:"Security strategy, governance, board reporting.", i:"fa-solid fa-shield-halved"},
+];
+const jg = document.getElementById('jobGrid');
+jobs.forEach(j=>{
+  const el=document.createElement('div');
+  el.className='job reveal';
+  el.innerHTML = `
+    <div class="head" style="display:flex;align-items:center;gap:12px">
+      <div class="ic" style="width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:var(--grad);color:#001318"><i class="${j.i}"></i></div>
+      <div><div class="role">${j.r}</div><div class="exp">${j.e}</div></div>
+    </div>
+    <div class="salary">${j.s}</div>
+    <div class="desc">${j.d}</div>`;
+  jg.appendChild(el);
+});
+
+/* ---------- FAQ ---------- */
+const faqs = [
+  {q:"Do I need to be a coder to become an ethical hacker?",a:"Yes. Hacking is programming with a security mindset. You must be comfortable in Python, C, JavaScript, Bash and SQL. Without code, you're stuck using other people's tools."},
+  {q:"Is Kali Linux enough to become a hacker?",a:"No. Kali is just a distro. Use Ubuntu daily and learn Linux deeply — permissions, cron, iptables, kernel, bash scripting. Kali is a toolbox, not a skill."},
+  {q:"How long does it take to become genuinely elite?",a:"3–5 years of focused, structured effort — roughly 15–20 hours per week — with public write-ups and lab practice. Shortcuts don't produce top 1% hackers."},
+  {q:"Which is the most important skill?",a:"Networking. If you don't understand TCP/IP, DNS, HTTP, TLS and routing better than most network engineers, ethical hacking is impossible."},
+  {q:"Are certifications like OSCP, CRTO, eJPT worth it?",a:"They help with jobs and structure your learning, but they don't replace real skill. Practical labs, bug bounty write-ups and a public GitHub matter more."},
+  {q:"Is bug bounty a full-time career in India?",a:"For the top hunters, yes — several Indian researchers earn multi-crore incomes. It requires deep web/API skills and disciplined recon over months and years."},
+  {q:"Can I attack any website to learn?",a:"Absolutely not. Only test systems you own or where you have explicit written permission. Unauthorized testing is illegal and can end your career before it starts."},
+  {q:"What language should I start with?",a:"Python for automation and tooling, then C for memory internals and low-level exploitation, then JavaScript for web hacking."},
+  {q:"Is this course beginner-friendly?",a:"Yes — chapters 1–5 start from absolute fundamentals. Advanced learners can jump into Web Security, AD, RE or Cloud modules directly."},
+  {q:"How do I enroll or ask for more details?",a:"Call or WhatsApp Ram Sir at 9753528324, or use the contact form below to send a query directly."},
+];
+const fl = document.getElementById('faqList');
+faqs.forEach(f=>{
+  const el=document.createElement('details');
+  el.className='reveal';
+  el.innerHTML=`<summary>${f.q}</summary><div class="ans">${f.a}</div>`;
+  fl.appendChild(el);
+});
+
+/* ---------- Reveal on scroll ---------- */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      // animate bars
+      if(e.target.classList.contains('market')){
+        e.target.querySelectorAll('.fill').forEach(f=>{f.style.width=f.dataset.w+'%'});
+      }
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const marketEl = document.querySelector('.market');
+if(marketEl){ io.observe(marketEl); }
+
+/* Close mobile menu on link click */
+document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+</script>
+</body>
+</html>
